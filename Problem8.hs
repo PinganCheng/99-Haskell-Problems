@@ -10,4 +10,8 @@
 
 -- > compress "aaaabccaadeeee"
 -- "abcade"
-
+compress :: (Eq a) => [a] -> [a]
+compress [] = []
+compress (x:xs) = if (xs /= []) && (x == (xs !! 0)) 
+                  then compress xs
+                  else x : compress xs
